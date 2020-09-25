@@ -109,7 +109,7 @@ public class BinaryTreeInorderTraversal {
                         res.add(root.val);
                         root = root.right;
                         predecessor.right = null;
-                        //这句话可以不写，因为只有root.left不为空才用到它，则它必然会重新赋值，在这里赋值null对程序进展没有用
+                        //最后这句话可以不写，因为只有root.left不为空才用到predecessor，则它必然会重新赋值，在这里赋值null对程序进展没有用
                         //写这句话的意义是把树结构还原，因为之前为了计算，将最右节点的右节点赋值了，所以需要清空
                     }
                 } else {
