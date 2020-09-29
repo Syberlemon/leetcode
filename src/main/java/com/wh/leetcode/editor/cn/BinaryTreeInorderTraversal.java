@@ -71,6 +71,33 @@ public class BinaryTreeInorderTraversal {
             }
         }
 
+        //TODO 递归结束条件不对，还需要改
+        public List<Integer> inorderTraversal1(TreeNode root) {
+            List<Integer> res = new ArrayList<>();
+            if(root == null){
+                return res;
+            }
+            Stack<TreeNode> stack = new Stack<>();
+            stack.push(root);
+            TreeNode ancestor = null;
+            while(!stack.isEmpty()){
+                TreeNode node = stack.pop();
+                while(node.left != null && node.left != ancestor){
+                    stack.push(node);
+                    ancestor = node;
+                    node = node.left;
+                }
+                res.add(node.val);
+                if(node.right != null){
+                    stack.push(node.right);
+                }
+            }
+            return res;
+        }
+
+
+
+
         //迭代算法，可以用栈，中序遍历要左链入栈，弹出一个元素后，取其右节点后还需要左链入栈
         public List<Integer> inorderTraversal_answer(TreeNode root) {
             List<Integer> res = new ArrayList<>();
