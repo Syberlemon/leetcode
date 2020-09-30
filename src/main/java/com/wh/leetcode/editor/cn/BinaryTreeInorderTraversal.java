@@ -71,7 +71,6 @@ public class BinaryTreeInorderTraversal {
             }
         }
 
-        //TODO 递归结束条件不对，还需要改
         public List<Integer> inorderTraversal1(TreeNode root) {
             List<Integer> res = new ArrayList<>();
             if(root == null){
@@ -79,17 +78,14 @@ public class BinaryTreeInorderTraversal {
             }
             Stack<TreeNode> stack = new Stack<>();
             stack.push(root);
-            TreeNode ancestor = null;
-            while(!stack.isEmpty()){
-                TreeNode node = stack.pop();
-                while(node.left != null && node.left != ancestor){
-                    stack.push(node);
-                    ancestor = node;
+            TreeNode node = null;//记录当前计算的节点
+            while(!stack.isEmpty() || node != null){
+                if(node.left != null){
                     node = node.left;
-                }
-                res.add(node.val);
-                if(node.right != null){
-                    stack.push(node.right);
+                } else {
+                    //左节点为空，说明走到最左节点了
+                    res.add(node.val);
+                    node = stack.pop();
                 }
             }
             return res;
@@ -142,6 +138,31 @@ public class BinaryTreeInorderTraversal {
                 } else {
                     res.add(root.val);
                     root = root.right;
+                }
+            }
+            return res;
+        }
+
+        // 递归结束条件不对，还需要改
+        // 错误点是while到最左节点了，但是往回走的话，还会进入这个while，不好拦截了
+        public List<Integer> inorderTraversal_try1(TreeNode root) {
+            List<Integer> res = new ArrayList<>();
+            if(root == null){
+                return res;
+            }
+            Stack<TreeNode> stack = new Stack<>();
+            stack.push(root);
+            TreeNode ancestor = null;
+            while(!stack.isEmpty()){
+                TreeNode node = stack.pop();
+                while(node.left != null && node.left != ancestor){
+                    stack.push(node);
+                    ancestor = node;
+                    node = node.left;
+                }
+                res.add(node.val);
+                if(node.right != null){
+                    stack.push(node.right);
                 }
             }
             return res;
