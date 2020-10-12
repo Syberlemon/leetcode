@@ -124,6 +124,22 @@ class Solution {
         }
         return resTree;
     }
+
+    public TreeNode mergeTrees1(TreeNode t1, TreeNode t2) {
+        if(t1 == null){
+            return t2;//这里如果t2是null，直接返回与判断一下t2再返回null一样
+        }
+        if(t2 == null){
+            return t1;
+        }
+        //能走到这里，说明t1和t2都不为空，所以直接取值和left right即可
+        TreeNode root = new TreeNode(t1.val+t2.val);
+        root.left = mergeTrees1(t1.left, t2.left);
+        root.right = mergeTrees1(t1.right, t2.right);
+        return root;
+    }
+
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
