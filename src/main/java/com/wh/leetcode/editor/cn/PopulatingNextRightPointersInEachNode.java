@@ -131,6 +131,27 @@ class Solution {
         }
         return root;
     }
+
+    //利用上一层的next指针
+    public Node connect_answer2(Node root) {
+        if(root == null){
+            return root;
+        }
+        Node leftmost = root;
+        while(leftmost.left != null){
+            Node head = leftmost;
+            while(head != null){
+                head.left.next = head.right;
+                if(head.next != null){
+                    head.right.next = head.next.left;
+                }
+                head = head.next;
+            }
+            //当前节点为null，说明该层走完了,去下一层
+            leftmost = leftmost.left;
+        }
+        return root;
+    }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
