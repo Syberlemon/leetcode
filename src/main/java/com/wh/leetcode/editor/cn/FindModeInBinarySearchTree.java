@@ -56,6 +56,7 @@ public class FindModeInBinarySearchTree {
 
     class Solution {
 
+        //中序遍历，计数，然后遍历计数结果输出众数
         public int[] findMode(TreeNode root) {
             Map<Integer, Integer> countMap = new HashMap<>();
             if(root == null){
@@ -135,9 +136,7 @@ public class FindModeInBinarySearchTree {
                 pre = node;
                 numCount = 1;
                 modes.add(node.val);
-            }
-            //对当前值进行计数
-            if(pre.val == node.val){//当前值和上个数相同，继续计数
+            } else if(pre.val == node.val){//当前值和上个数相同，继续计数
                 numCount += 1;
             } else{//当前值和上个值不同，重新计数
                 pre = node;
@@ -153,6 +152,48 @@ public class FindModeInBinarySearchTree {
                 modes.add(node.val);
             }
             dfs(node.right);
+        }
+
+        /**
+         * 答案收货：1、list转数组，是写for循环逐个赋值的，没有用工具方法
+         * 2、不需要记录前一个节点，记录前一个值即可。我写代码因为函数外拿不到root，故pre有空指针问题，初始化搞得易出错
+         * 3、对于当前值的处理，单独写一个方法，代码条理更清晰
+         * 4、起名字，如answer，count，maxCount
+         * Morris解法感觉复杂，不抄了
+         */
+        List<Integer> answer = new ArrayList<>();
+        int base,count,maxCount;
+        public int[] findMode_answer(TreeNode root){
+            dfs_answer(root);
+            int[] mode = new int[answer.size()];
+            for (int i = 0; i < answer.size(); i++){
+                mode[i] = answer.get(i);
+            }
+            return mode;
+        }
+        public void dfs_answer(TreeNode o){
+            if(o == null){
+                return;
+            }
+            dfs_answer(o.left);
+            update(o.val);
+            dfs_answer(o.right);
+        }
+        public void update(int x){
+            if(x == base){
+                ++count;
+            } else {
+                count = 1;
+                base = x;
+            }
+            if(count == maxCount){
+                answer.add(x);
+            }
+            if(count > maxCount){
+                maxCount = count;
+                answer.clear();
+                answer.add(base);
+            }
         }
 
     }
