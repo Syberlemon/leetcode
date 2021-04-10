@@ -58,6 +58,7 @@ public class FindMinimumInRotatedSortedArray {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 //  第一感觉：这个题简单到怀疑人生，居然是中等难度
+//  我的思路：因为题干是旋转的，所以部分有序，如果前一个大于后一个，说明旋转过那后一个就是最小值，如果后面都大于前面，说明没旋转过，第一个就是最小值
 //  看完答案：这个题解法还可以优化，因为for循环的复杂度是O(n),用二分查找可以降到O(log n)
     public int findMin(int[] nums) {
         for(int i = 0; i < nums.length - 1; i++){
@@ -85,7 +86,30 @@ class Solution {
             }
         }
         return nums[low];//这里由于low==high，所以返回nums[high]是一样的
+        /**
+         *   面试别人可以问的地方：
+         *   1、if-else判断里面如果 high=pivot-1, low=pivot 还对吗？为啥？
+         *   不对，因为数组是升序，所以左侧可以往右多走一步，因为左侧元素是旋转过去的
+         *   下一个元素可能是继续增大的，也可能是最小值，不能多走两步，不确定断崖在哪里
+         *   右侧往左不可以多走，因为pivot可能就是最小值，往小多走一步可能越过最小值
+         *   2、return的nums[low] 如果改成nums[high]还对吗？为啥？
+         *   对，因为最后结束while循环的时候一定是low==high，如果low!=high，那么还满足low<high
+         */
     }
+
+        public int findMax(int[] nums) {
+            int low = 0;
+            int high = nums.length - 1;
+            while(low < high){
+                int pivot = low + (high - low)/2 + 1;//注意如果拿low和pivot比较找最大值这里要+1,
+                if(nums[low] < nums[pivot]){
+                    low = pivot;
+                } else {
+                    high = pivot - 1;
+                }
+            }
+            return nums[low];
+        }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
