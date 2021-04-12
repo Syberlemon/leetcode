@@ -78,7 +78,7 @@ class Solution {
         }
         return str;
     }
-    //TODO 题解sx是可以和x做加法的倍数，比如x=5，那么sx=10，比如x=15,那么sx=100;
+    //题解sx是可以和x做加法的倍数，比如x=5，那么sx=10，比如x=15,那么sx=100;
 //        sx * y + x 为 y+x ; sy * x + y 为 x+y
      public String largestNumber_answer(int[] nums){
         int n = nums.length;
