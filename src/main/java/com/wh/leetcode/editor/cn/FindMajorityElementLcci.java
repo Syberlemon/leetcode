@@ -34,25 +34,24 @@ public class FindMajorityElementLcci {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int majorityElement(int[] nums) {
-        int major = -1;
-        int count = 0;
         if(nums.length <= 0){
-            return major;
+            return -1;
         }
-        for(int i = 0; i < nums.length; i++){
-            if(major == -1){//山顶没人，直接占领
+        int major = nums[0];
+        int count = 1;
+        for(int i = 1; i < nums.length; i++){
+            if(count == 0){//山顶没人，直接占领
                 major = nums[i];
                 count = 1;
             }else if(nums[i] == major){//山顶是队友
                 count ++;
             }else{
-                count--;
-                if(count == 0){
-                    major = -1;//敌军将队友打完了
-                }
+                count--;//敌军打掉一个队友
             }
         }
-        if(major != -1){
+        if(count==0){
+            return -1;
+        } else {
             //判断major是否为主元素
             int majorCount = 0;
             for(int j = 0; j < nums.length; j++){
@@ -60,11 +59,12 @@ class Solution {
                     majorCount++;
                 }
             }
-            if(majorCount <= nums.length / 2){
-                major = -1;
+            if(majorCount > nums.length / 2){
+                return major;
+            } else {
+                return -1;
             }
         }
-        return major;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
