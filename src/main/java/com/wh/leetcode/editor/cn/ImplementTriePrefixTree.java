@@ -70,6 +70,7 @@ class Trie {
             if(node.children[index] == null){
                 node.children[index] = new Trie();
             }
+            node = node.children[index];
         }
         node.isEnd = true;
     }
