@@ -67,28 +67,37 @@ class Solution {
         return kmp(s+s, s);
     }
 
+        /**
+         * 看着kmp是针对模式串来说的，如果模式串里面有公共前后缀就发挥功效了
+         * 像abcde 前缀表 00000 就没啥用
+         * 像aabaa 前缀表 01012 就知道一个字母匹配不上，能从哪个开始匹配，而不是从头开始
+         *
+         * 先求next数组，然后将next数组用于匹配。复杂度O(m+n)
+         * @param query
+         * @param pattern
+         * @return
+         */
     private boolean kmp(String query, String pattern){
-        int n = query.length();
-        int m = pattern.length();
-        int[] fail = new int[m];
-        Arrays.fill(fail, -1);
-        for(int i = 1; i < m; ++i){
-            int j = fail[i - 1];
+        int[] next = new int[pattern.length()];
+        Arrays.fill(next, -1);
+        //计算next数组
+        for(int i = 1; i < pattern.length(); ++i){
+            int j = next[i - 1];
             while(j != -1 && pattern.charAt(j+1) != pattern.charAt(i)){
-                j = fail[j];
+                j = next[j];
             }
             if(pattern.charAt(j+1)==pattern.charAt(i)){
-                fail[i] = j + 1;
+                next[i] = j + 1;
             }
         }
         int match = -1;
-        for(int i = 1; i < n - 1; ++i){
+        for(int i = 1; i < query.length() - 1; ++i){
             while(match != -1 && pattern.charAt(match+1)!= query.charAt(i)){
-                match = fail[match];
+                match = next[match];
             }
             if(pattern.charAt(match+1) == query.charAt(i)){
                 ++match;
-                if(match == m-1){
+                if(match == pattern.length()-1){
                     return true;
                 }
             }
