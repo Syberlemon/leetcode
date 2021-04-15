@@ -75,6 +75,51 @@ class Solution {
         }
         return Math.max(second,newSecond);
     }
+//  将haveZero数组换成两个变量来运算
+    public int rob2(int[] nums) {
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        int length = nums.length;
+        if(length == 1){
+            return nums[0];
+        }
+        if(length == 2){
+            return Math.max(nums[0], nums[1]);
+        }
+        int first = nums[0];
+        int second = Math.max(nums[0], nums[1]);
+        int firstFlag = 1;
+        int secondFlag = nums[0] > nums[1] ? 1 : 0;
+        for(int i = 2; i < nums.length; i++){
+            int temp = second;
+            second = Math.max(first + nums[i], second);
+            first = temp;
+            if(second != temp){//说明second是加法得到的
+                int tempFlag = secondFlag;
+                secondFlag = firstFlag;
+                firstFlag = tempFlag;
+            } else {
+                firstFlag = secondFlag;
+            }
+            //最后一个元素的时候，我需要知道他前面的两个值是否包含了第一个元素，包含的话就不能再加他自身了
+            if(i == nums.length - 1){
+                if(secondFlag == 1){
+                    second = Math.max(second - nums[i], first);
+                } else {
+                    return second;//不需要再判断不包含第一个元素的情况，因为当前就不包括
+                }
+            }
+        }
+        int newFirst = nums[1];
+        int newSecond = nums[2];
+        for(int i = 3; i < nums.length; i++){
+            int temp = newSecond;
+            newSecond = Math.max(newFirst + nums[i], newSecond);
+            newFirst = temp;
+        }
+        return Math.max(second,newSecond);
+    }
 
     public int rob_answer(int[] nums){
         int length = nums.length;
