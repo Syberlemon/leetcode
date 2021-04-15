@@ -38,9 +38,73 @@ public class HouseRobber {
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-//    public int rob(int[] nums) {
-//
-//    }
+    public int rob(int[] nums) {
+        //动态规划题目，偷当前房的最大金额为 max(rob(n-1), rob(n-2) + money(n))
+        if(nums.length == 0){
+            return 0;
+        }
+        int[] memo = new int[nums.length];//备忘录，不加备忘录会超时
+        for(int i = 0; i < nums.length; i++){
+            memo[i] = -1;
+        }
+        return robMaxMoney(nums, nums.length-1, memo);
+    }
+
+    //偷n间房最大的钱
+    private int robMaxMoney(int[] nums, int n, int[] memo){
+        if(n == 0){
+            return nums[0];
+        }
+        if(n == 1){
+            return Math.max(nums[0], nums[1]);
+        }
+        if(memo[n] != -1){
+            return memo[n];
+        }
+        int robN = robMaxMoney(nums, n-2, memo) + nums[n];
+        int nrobN = robMaxMoney(nums, n-1, memo);
+        memo[n] = Math.max(robN, nrobN);
+        return memo[n];
+    }
+
+    public int rob_answer(int nums[]){
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        int length = nums.length;
+        //因为后面迭代要用nums[1]，所以对于只有一个元素的需要单拎出来提前返回
+        if(length == 1){
+            return nums[0];
+        }
+        int[] dp = new int[length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+        //用的正向推导，所以dp自身就相当于备忘录了，这样写起来更简单
+        for(int i = 2; i < length; i++){
+            dp[i] = Math.max(dp[i-2] + nums[i], dp[i-1]);
+        }
+        return dp[length-1];
+    }
+
+    public int rob_answer2(int nums[]){
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        int length = nums.length;
+        if(length == 1){
+            return nums[0];
+        }
+        int first = nums[0], second = Math.max(nums[0], nums[1]);
+        for(int i = 2; i < length; i++){
+            int temp = second;
+            second = Math.max(first + nums[i], second);
+            first = temp;
+        }
+        return second;
+        // 简化了额外需要的空间，dp数组需要n个空间
+        // 而滚动数组只需要两个变量，是题目特殊性，当前房屋最高金额 只和前两个房屋最高金额相关
+        // 每个迭代中将first和second的值更新
+    }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
