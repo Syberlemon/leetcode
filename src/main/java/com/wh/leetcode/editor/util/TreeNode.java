@@ -1,4 +1,4 @@
-package com.wh.leetcode.editor.cn;
+package com.wh.leetcode.editor.util;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -10,11 +10,11 @@ import java.util.Queue;
  * Date:  2020/9/26
  */
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode(int x) {
+    public TreeNode(int x) {
         val = x;
     }
 

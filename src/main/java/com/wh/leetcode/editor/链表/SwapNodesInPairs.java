@@ -1,4 +1,4 @@
-package com.wh.leetcode.editor.cn;
+package com.wh.leetcode.editor.链表;
 //给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 
 //
 // 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 
@@ -11,6 +11,8 @@ package com.wh.leetcode.editor.cn;
 // 
 // Related Topics 链表 
 // 👍 678 👎 0
+
+import com.wh.leetcode.editor.util.ListNode;
 
 public class SwapNodesInPairs {
     public static void main(String[] args) {

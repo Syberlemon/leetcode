@@ -34,6 +34,8 @@ package com.wh.leetcode.editor.cn;
 // Related Topics 树 
 // 👍 455 👎 0
 
+import com.wh.leetcode.editor.util.TreeNode;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

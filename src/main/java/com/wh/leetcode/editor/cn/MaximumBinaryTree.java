@@ -35,8 +35,7 @@ package com.wh.leetcode.editor.cn;
 // Related Topics 树 
 // 👍 196 👎 0
 
-import java.util.HashMap;
-import java.util.Map;
+import com.wh.leetcode.editor.util.TreeNode;
 
 public class MaximumBinaryTree {
 

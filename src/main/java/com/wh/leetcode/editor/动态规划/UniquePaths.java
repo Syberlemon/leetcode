@@ -1,4 +1,4 @@
-package com.wh.leetcode.editor.cn;
+package com.wh.leetcode.editor.动态规划;
 //一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。 
 //
 // 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。 
@@ -68,6 +68,13 @@ public class UniquePaths {
             return uniquePaths(m - 1, n) + uniquePaths(m, n - 1);
         }
 
+        /**
+         * 为什么第一行和第一列都赋值为1，因为只能向右走或者向下走，所以到达该节点的方式只有一种
+         * f[i][j] 为到达该节点的路径个数，右下角节点为 f[m-1][n-1]
+         * 当前节点只有两种方式到达，向右走 或者 向下走，所以适合递推，即存在递推公式
+         * f[i][j] = f[i-1][j] + f[i][j-1]
+         * @date: 2023/7/31 21:03
+         */
         public int uniquePaths_answer(int m, int n) {
             int[][] f = new int[m][n];
             for (int i = 0; i < m; ++i) {

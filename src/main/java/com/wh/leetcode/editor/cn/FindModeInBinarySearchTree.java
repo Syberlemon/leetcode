@@ -28,6 +28,8 @@ package com.wh.leetcode.editor.cn;
 // 👍 186 👎 0
 
 import com.alibaba.fastjson.JSONObject;
+import com.wh.leetcode.editor.util.TreeNode;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

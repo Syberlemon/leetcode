@@ -53,6 +53,8 @@ package com.wh.leetcode.editor.cn;
 // Related Topics 链表 双指针 
 // 👍 787 👎 0
 
+import com.wh.leetcode.editor.util.ListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -16,6 +16,8 @@ package com.wh.leetcode.editor.cn;
 // Related Topics 栈 树 
 // 👍 440 👎 0
 
+import com.wh.leetcode.editor.util.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;

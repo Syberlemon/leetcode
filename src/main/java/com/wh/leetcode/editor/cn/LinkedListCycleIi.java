@@ -41,6 +41,8 @@ package com.wh.leetcode.editor.cn;
 // Related Topics 链表 双指针 
 // 👍 693 👎 0
 
+import com.wh.leetcode.editor.util.ListNode;
+
 public class LinkedListCycleIi {
     public static void main(String[] args) {
         Solution solution = new LinkedListCycleIi().new Solution();

@@ -27,6 +27,8 @@ package com.wh.leetcode.editor.cn;
 // Related Topics 树 
 // 👍 93 👎 0
 
+import com.wh.leetcode.editor.util.TreeNode;
+
 public class SearchInABinarySearchTree {
     public static void main(String[] args) {
         Solution solution = new SearchInABinarySearchTree().new Solution();

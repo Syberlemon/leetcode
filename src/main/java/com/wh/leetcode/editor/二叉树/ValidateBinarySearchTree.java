@@ -1,4 +1,4 @@
-package com.wh.leetcode.editor.cn;
+package com.wh.leetcode.editor.二叉树;
 //给定一个二叉树，判断其是否是一个有效的二叉搜索树。 
 //
 // 假设一个二叉搜索树具有如下特征： 
@@ -32,6 +32,8 @@ package com.wh.leetcode.editor.cn;
 // 
 // Related Topics 树 深度优先搜索 
 // 👍 807 👎 0
+
+import com.wh.leetcode.editor.util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

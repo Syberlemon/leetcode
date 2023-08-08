@@ -1,4 +1,4 @@
-package com.wh.leetcode.editor.cn;
+package com.wh.leetcode.editor.util;
 
 /**
  * Created on 2020/10/9
@@ -8,18 +8,18 @@ package com.wh.leetcode.editor.cn;
 
 public class ListNode {
 
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
-    ListNode() {
+    public ListNode() {
     }
 
-    ListNode(int x) {
+    public ListNode(int x) {
         val = x;
         next = null;
     }
 
-    ListNode(int val, ListNode next) {
+    public ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
     }

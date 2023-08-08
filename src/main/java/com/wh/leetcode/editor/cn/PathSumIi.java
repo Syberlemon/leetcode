@@ -26,10 +26,9 @@ package com.wh.leetcode.editor.cn;
 // Related Topics 树 深度优先搜索 
 // 👍 338 👎 0
 
-import com.alibaba.fastjson.JSONObject;
+import com.wh.leetcode.editor.util.TreeNode;
 
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 

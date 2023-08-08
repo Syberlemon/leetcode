@@ -36,6 +36,8 @@ package com.wh.leetcode.editor.cn;
 // Related Topics 树 深度优先搜索 
 // 👍 254 👎 0
 
+import com.wh.leetcode.editor.util.TreeNode;
+
 import java.util.LinkedList;
 import java.util.Queue;
 

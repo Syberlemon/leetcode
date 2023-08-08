@@ -1,4 +1,4 @@
-package com.wh.leetcode.editor.cn;
+package com.wh.leetcode.editor.滑动窗口;
 //所有 DNA 都由一系列缩写为 'A'，'C'，'G' 和 'T' 的核苷酸组成，例如："ACGAATTCCG"。在研究 DNA 时，识别 DNA 中的重复
 //序列有时会对研究非常有帮助。 
 //
@@ -98,6 +98,11 @@ class Solution {
     }
 
 //    滑动窗口+hash
+        /**
+         *  滑动窗口 就是for循环？ for循环内部是取字符串的固定长度去计算。
+         *  因为不止出现一次，所以借助hashmap，出现过一次的再出现 则加入结果集
+         *  @date: 2023/7/31 19:42
+         */
 
         /**
          * 这个滑动窗口，说白了就是看一个字符串（窗口能看到的内容），将这个字符串看做一个整体来处理，然后不断挪动窗口
@@ -123,6 +128,8 @@ class Solution {
 //    这种重复很有意思，还有那种可以不连续的重复的，感觉更复杂一点，因为那样组合情况会更多，连续相当于一个限制条件
 
 //    还有一个解是使用前缀和，去做303看看什么是前缀和
+//        就是前面多少个数的和
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 

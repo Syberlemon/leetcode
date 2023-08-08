@@ -18,6 +18,8 @@ package com.wh.leetcode.editor.cn;
 // Related Topics 链表 双指针 
 // 👍 1073 👎 0
 
+import com.wh.leetcode.editor.util.ListNode;
+
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
